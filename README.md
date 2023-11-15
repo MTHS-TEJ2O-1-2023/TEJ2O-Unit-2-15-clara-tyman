@@ -17,7 +17,7 @@ black --check --diff ./*.py
 ## To Build *.hex for Micro:bit using MicroPython
 
 Run the following command in the terminal, where your *.py file is located:
-
+0
 ``` bash
 py2hex ./main.py
 ```
