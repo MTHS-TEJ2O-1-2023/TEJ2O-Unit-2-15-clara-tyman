@@ -16,14 +16,12 @@ basic.showIcon(IconNames.Silly)
 
 // when button A is pressed, move sprite around edge
 input.onButtonPressed(Button.A, function () {
-
   // prep screen
   basic.clearScreen()
   sprite = game.createSprite(0, 0)
 
   loopCounter = 0
   while (loopCounter <= 3) {
-
     xValue = 0
     while (xValue <= 4) {
       basic.pause(500)
