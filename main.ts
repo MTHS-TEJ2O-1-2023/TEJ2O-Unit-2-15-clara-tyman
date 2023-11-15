@@ -6,7 +6,7 @@
 */
 
 // variables
-let xValue: number = 0
+let ledCoordinate: number = 0
 let loopCounter: number = 0
 let sprite: game.LedSprite = null
 
@@ -22,16 +22,19 @@ input.onButtonPressed(Button.A, function () {
 
   loopCounter = 0
   while (loopCounter <= 3) {
-    xValue = 0
-    while (xValue <= 4) {
+    // reset ledCoordinate
+    ledCoordinate = 0
+    while (ledCoordinate <= 4) {
+      // move ledCoordinate
       basic.pause(500)
       sprite.move(1)
-      xValue++
+      ledCoordinate++
     }
+    // tuning 90 degrees
     sprite.turn(Direction.Right, 90)
     loopCounter++
   }
-
+  // clean up
   sprite.delete()
   basic.pause(500)
   basic.showIcon(IconNames.Silly)
