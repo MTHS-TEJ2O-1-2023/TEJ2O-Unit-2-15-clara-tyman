@@ -1,37 +1,65 @@
 """
 Created by: Clara
 Created on: Nov 2023
-This module is a Micro:bit MicroPython program moves the LED's on the Microbit around the edge of the screen. 
+This module is a Micro:bit MicroPython program that moves a LED pixel around the edge.
 """
 
 from microbit import *
 
+
 # variables
-set_pixel = None
-loopCounter = 0
-led_coordinate = 0
+y_axis_coordiante = 0
+x_axis_coordiante = 0
 
-# Setup
+# setup
 display.clear()
-display.show(Image.SILLY)
-sleep(500)
+display.show(Image.STICKFIGURE)
+sleep(1000)
 
-# Press button A
+# loop
 while True:
     if button_a.is_pressed():
-        display.clear()
-        loopCounter = 0
+        # setup
 
-        while loopCounter < 5:
-            led_coordinate = 0
-            while led_coordinate <= 3:
-                led_coordinate = 0
-                while led_coordinate <= 4:
+        # reset variables
+        y_axis_coordiante = 0
+        x_axis_coordiante = 0
+
+    # loop that moves pixel down
+    while y_axis_coordiante <= 3:
+        # loop that moves pixel right
+        while x_axis_coordiante <= 3:
+            sleep(500)
+
+            display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+            sleep(500)
+            display.clear()
+
+            x_axis_coordiante += 1
+            sleep(500)
+            display.clear()
+            display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+            y_axis_coordiante += 1
+            # delete pixel after it reaches (4, 3)
+            display.clear()
+
+            # loop that moves pixel up
+            while y_axis_coordiante >= 0:
+                # loop that moves pixel left
+                while x_axis_coordiante >= 1:
                     sleep(500)
-                    display.set_pixel(led_coordinate, loopCounter, 9)
-                    led_coordinate += 1
 
-                    led_coordinate = 0
-                    loopCounter += 1
-                display.clear()
-                sleep(500)
+                    display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+                    sleep(500)
+                    display.clear()
+
+                    x_axis_coordiante -= 1
+
+                    sleep(500)
+                    display.clear()
+                    display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+                    y_axis_coordiante -= 1
+                    # when full turn is completed
+                    sleep(500)
+                    display.clear()
+                    display.show(Image.STICKFIGURE)
